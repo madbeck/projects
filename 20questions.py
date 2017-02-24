@@ -1,5 +1,6 @@
 """
-BELOW CODE CREATES A BINARY TREE OBJECT
+The below program creates a binary tree object and utilizes that object in an animal-themed 20-questions game.
+The original game starts with 20 questions but gets "smarter" as you play, adding questions when it guesses the user's animal incorrectly.
 """
 
 class Binary_Tree:
@@ -97,7 +98,7 @@ class Binary_Tree:
             return "Binary_Tree(" + repr(self.get_root_val()) + ", " + repr(self.leftchild) + ", " + repr(self.rightchild) + ")"
         
 '''
-BELOW IMPLEMENTS THE BINARY TREE OBJECET (ABOVE)
+Below code implements the above object, adding in relevant questions.
 '''
 
 #if user answers no, go to left node; if user answer yes, go to right node
