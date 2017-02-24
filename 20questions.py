@@ -98,7 +98,7 @@ class Binary_Tree:
             return "Binary_Tree(" + repr(self.get_root_val()) + ", " + repr(self.leftchild) + ", " + repr(self.rightchild) + ")"
         
 '''
-Below code implements the above object, adding in relevant questions.
+Below code implements the above object in a real game.
 '''
 
 #if user answers no, go to left node; if user answer yes, go to right node
