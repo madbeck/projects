@@ -142,7 +142,6 @@ int main()
 			else {
 				printf("uh oh, here's r: %f\n", r);
 			}
-      
 			if ((0.0<=theta)&&(theta<=(pi)/20)){
 				score = 6;
 			}
@@ -215,7 +214,6 @@ int main()
 				printf("uh oh, theta: %lf\n", theta);
 			}	
 		}
-
 		if(((126.0/432)<=r)&&(r<=(136.0/432))){
 			score = score*3; //triple-score ring
 		}
@@ -224,7 +222,6 @@ int main()
 		}
 		total_score = total_score + score;
 	}
-  
 	printf("The total score is: %ld\n", total_score);
 	double avg_score=0.0;
 	avg_score = (1.0*(total_score)/(1.0 * num));
