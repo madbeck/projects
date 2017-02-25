@@ -1,4 +1,6 @@
-//Simulates dart throws
+// a parallel version of the sequential darts code
+// uses OpenMP with up to 8 threads to do this
+// focus is on timing for a large number of throws so aim and skill level are constant
 
 #include <stdlib.h>
 #include <math.h>
