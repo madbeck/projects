@@ -1,3 +1,5 @@
+//Simulates dart throws
+
 #include <stdlib.h>
 #include <math.h>
 #include <float.h>
@@ -12,8 +14,7 @@
 
 double generateGaussianNoise(double mu, double sigma) //below from https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform#Implementation
 {
-    const double epsilon = DBL_MIN; //std::numeric_limits<double>::min();
-    //http://stackoverflow.com/questions/1153548/minimum-double-value-in-c-c
+    const double epsilon = DBL_MIN;
     const double two_pi = 2.0*3.14159265358979323846;
     static double z0, z1;   
     static int generate=0; //starts out as false, but everytime I recall the function, it doesn't get redefined, retains previous definitio
@@ -43,7 +44,7 @@ int main()
     const double two_pi = 2.0*3.14159265358979323846;
     const double pi = 3.14159265358979323846;
     double x, y;
-    int j, i, n, num = 1000000; //number of dart throws we want
+    int j, i, n, num = 1000000; //number of dart throws
     n = num;
     int skill;
     int aim;
@@ -63,12 +64,11 @@ int main()
     #pragma omp for reduction(+:total_score)
     for (i=0; i < n ; i++) {
         tid = omp_get_thread_num();
-        //printf("%d: my score is: %lf\n", tid, total_score);
         x = generateGaussianNoise(0.5, 0.001);
         y = generateGaussianNoise((0.5+(131.0/432)), 0.001);
         double theta;
         double r, new_x, new_y, center_x = 0.5, center_y = 0.5; //center_x and center_y are constants for center of circle
-        new_x = x - center_x; //these are redefined later too
+        new_x = x - center_x; //these are redefined later
         new_y = y - center_y;
         r = sqrt(pow(new_x, 2) + pow(new_y, 2)); //radius will always be positive
  
@@ -188,9 +188,8 @@ int main()
     }
     int num_threads;
     num_threads = omp_get_num_threads();
-    printf("how many threads: %i\n", num_threads); //prints the number of times there are processors - would fix with more time
+    printf("how many threads: %i\n", num_threads);
     }
- 
     double run_time = cur_time() - start_time;
     double elapsed_time = 1.0 * (run_time);
     double avg_score=0.0;
@@ -198,5 +197,4 @@ int main()
     printf("The average score is: %lf\n", avg_score);
     //printf("number of threads: %i\n", num_threads);
     printf("time: %lf\n", elapsed_time);
-    
 }
