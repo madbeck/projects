@@ -1,3 +1,6 @@
+// a sequential program that simulates random dart throws (using normal distribution) and accepts user input for varying skill and aim
+// goal is to simulate enough throws to guage which aims work best for different skill levels
+
 #include <stdlib.h>
 #include <math.h>
 #include <float.h>
