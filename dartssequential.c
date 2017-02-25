@@ -7,8 +7,7 @@
 
 double generateGaussianNoise(double mu, double sigma) //below from https://en.wikipedia.org/wiki/Box%E2%80%93Muller_transform#Implementation
 {
-	const double epsilon = DBL_MIN; //std::numeric_limits<double>::min();
-	//http://stackoverflow.com/questions/1153548/minimum-double-value-in-c-c
+	const double epsilon = DBL_MIN;
 	const double two_pi = 2.0*3.14159265358979323846;
 	static double z0, z1;	
 	static int generate=0; //starts out as false, but everytime I recall the function, it doesn't get redefined, retains previous definitio
@@ -38,7 +37,7 @@ int main()
 	const double two_pi = 2.0*3.14159265358979323846;
 	const double pi = 3.14159265358979323846;
 	double x, y;
-	int j, i, n, num = 10000000; //num is number of throws we want
+	int j, i, n, num = 10000000; //num is number of throws
 	n = num;
 	int skill;
 	int aim;
@@ -81,7 +80,7 @@ int main()
 	scanf("%i",&aim); //aiming will always be in the 3-point score part of the slice
 	if(aim==20){
 		x_aim = 0.5;
-		y_aim = 0.5+(131.0/432); //(0.5+(131/432));
+		y_aim = 0.5+(131.0/432);
 	}
 	if(aim==5){
 		x_aim = 0.5+((131.0/432)*cos(3.0*pi/5));
@@ -91,7 +90,7 @@ int main()
 		x_aim = 0.5+((131.0/432)*cos(2.0*pi/5));
 		y_aim = 0.5+((131.0/432)*sin(2.0*pi/5));
 	}
-	printf("x_aim: %lf\n", x_aim); //why is it not displaying these values correctly? does this mean they actually aren't correct?a
+	printf("x_aim: %lf\n", x_aim);
 	printf("y_aim: %lf\n", y_aim);
 	printf("level: %lf\n", level);
   
