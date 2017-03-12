@@ -1,5 +1,5 @@
 '''
-A generate and filter program that finds all the legal colorings of a graph (ex: US states map) where no two connected nodes can have the same color.
+A generate and filter program that finds all the legal colorings of a graph (ex: US states map) where no two connected nodes can have the same color
 Utilizes the functions collect_all_colorings() and is_a_legal_coloring(), the respective generate and filter methods of the program
 
 An example of what the code does:
@@ -154,7 +154,7 @@ def find_the_color_of(node, possible_coloring, first_time): #uses recursion to c
     else:
         return find_the_color_of(node, possible_coloring[3:], False)
 
-########################GENERATOR AND FILTER COMBINED - collect_legal_colors()
+########################GENERATOR AND FILTER COMBINED - collect_legal_colorings()
 
 def collect_legal_colorings(states, colors, borders):
     assert colors == "rgb" or "rbg" or "gbr" or "grb" or "bgr" or "brg" #this makes sure our colors are red, blue, and green, no more, no less
