@@ -65,7 +65,7 @@ def collect_all_colorings(states, colors):
     if MODE=='mine':
         answer = True
         
-        # REPLACE THIS WITH YOUR ALGORITHM for collect_legal.  Set the variable answer instead of doing a return if you want to see it printed automatically
+      
     elif MODE=='test samples' or MODE=='answer key':
         try:
             """ Call all sample answers, see what answers we get ... """
@@ -79,10 +79,7 @@ def collect_all_colorings(states, colors):
             else:
                 answer = collect_legal_colorings_samples_all(states, colors, borders)
         except:
-            print "Hmmmm... can't find sample answers. This shouldn't happen on the CS teaching lab computers"
-            print " If you are running this program on another computer, you'll have to wait to check"
-            print " your test suite against the sample answers when you're back in the lab."
-            print " (Remember to Team->Commit on your computer and Team->Update in the lab.)"
+            print "Hmmmm... can't find sample answers."
             answer = ""
     else:
         answer = 'ERROR: You need to set MODE correctly in graph_coloring.py'
