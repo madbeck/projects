@@ -223,7 +223,7 @@ class hashmap: #implements both Node and LinkedList
 			assert(self.map[index] == None)
 			return None
 
-	def flat_load(self): #returns (items in hash map)/(size of hash map) - should never be greater than 1
+	def flat_load(self): #returns (items in hash map)/(size of hash map)
 		return float(self.num_items)/self.size
 
 	def __repr__(self):
