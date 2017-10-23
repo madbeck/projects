@@ -494,7 +494,7 @@ struct maze_room *get_neighbor(int num_rows, int num_cols, struct maze_room maze
 }
 
 
-//FINAL FILE, holds maze struct and directions
+//FINAL FILE, holds maze struct and directions (.h file)
 /*
  * Enum to represent the four directions
  * Here is an example of how to use an enum:
