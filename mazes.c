@@ -421,3 +421,119 @@ int main(int argc, char **argv) {
   	}
 	return 0;
 }
+
+//ROOM VALIDATOR
+#include <assert.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include "common.h"
+
+/*
+ * Determines whether or not the room at [row][col] is a valid room within the maze with
+ * dimensions num_rows x num_cols
+ *
+ * Parameters:
+ *	- row: row of the current room
+ *	- col: column of the current room
+ *	- num_rows: number of rows in the maze
+ *	- num_cols: number of columns in the maze
+ * 
+ * Returns:
+ *	- 0 if room is not in the maze, 1 if room is in the maze
+ */
+int is_in_range(int row, int col, int num_rows, int num_cols) {
+	//Fill in this function
+	if(((0 <= row) && (row < num_rows)) && ((0 <= col) && (col < num_cols))){
+		return 1; //1 if IN RANGE
+	}
+	else{
+		return 0;
+	}
+}
+
+/*
+ * Given a pointer to the room and a Direction to travel in, return a pointer to the room
+ * that neighbors the current room on the given Direction.
+ * For example: get_neighbor(&maze[3][4], EAST) should return &maze[3][5]
+ *
+ * Parameters:
+ *	- num_rows: number of rows in the maze
+ *	- num_cols: number of columns in the maze
+ *	- room: pointer to the current room
+ *	- dir: Direction to get the neighbor from
+ *	- maze: a 2D array of maze_room structs representing your maze
+* Returns:
+ *	- pointer to the neighboring room
+ */
+ //get_neighbour is returning a pointer to a structure maze_room
+struct maze_room *get_neighbor(int num_rows, int num_cols, struct maze_room maze[num_rows][num_cols],
+			                    struct maze_room *room, Direction dir) {
+	//Fill in this function
+	
+	if(dir == 0){
+		if(is_in_range(room->row-1, room->col, num_rows, num_cols)==1){
+			return &maze[room -> row-1][room -> col];
+		}
+	}
+	if(dir == 1){
+		if(is_in_range(room->row+1, room->col, num_rows, num_cols)==1){
+			return &maze[room -> row+1][room -> col];
+		}
+	}
+	if(dir == 2){
+		if(is_in_range(room->row, room->col-1, num_rows, num_cols)==1){
+			return &maze[room -> row][room -> col-1];
+		}
+	}
+	if(dir == 3){
+		if(is_in_range(room->row, room->col+1, num_rows, num_cols)==1){
+			return &maze[room -> row][room -> col+1];
+		}
+	}
+	return NULL;
+}
+
+
+//FINAL FILE, holds maze struct and directions
+/*
+ * Enum to represent the four directions
+ * Here is an example of how to use an enum:
+ *
+ * Direction dir = EAST;
+ * if (dir == EAST) {
+ *     printf("Heading EAST!");
+ * }
+ */
+/*
+#include <stdbool.h>
+
+typedef enum {
+	NORTH = 0,
+	SOUTH = 1,
+	WEST = 2,
+	EAST = 3
+} Direction;
+
+
+ //Struct to represent a room in the maze.
+ //Must store:
+
+struct maze_room {
+  struct maze_room *next;
+  // Fill in the rest of the fields you need
+  // int maze[num_rows][num_cols]; ?? necessary?
+  int row;
+  int col;
+  int visited; // 1 if visited, 0 if not visited
+  int connections[4]; //0=north, 1=south, 2=west, 3=east
+  int connection_north; //1 if wall, 0 if no wall
+  int connection_east;
+  int connection_west;
+  int connection_south;
+};
+
+int is_in_range(int row, int col, int num_rows, int num_cols);
+
+struct maze_room *get_neighbor(int num_rows,
+        int num_cols, struct maze_room maze[][num_cols], struct maze_room *room, Direction dir);
+*/
