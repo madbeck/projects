@@ -181,37 +181,24 @@ class hashmap: #implements both Node and LinkedList
 		#key is a string
 		new_hash = hash(key)
 		index = new_hash%self.size
-
-		if self.num_items < self.size: #any add is fine
-			if self.map[index] == None: #no collision
-				LL = LinkedList()
+		
+		if self.map[index] == None: #no collision
+			LL = LinkedList()
+			LL.add_element((key, value))
+			self.num_items += 1
+			self.map[index] = LL
+			return 1
+		else: #collision! just add key, value pair to linked list
+			assert(self.map[index]!= None)
+			LL = self.map[index]
+			if LL.get_value(key) == None:
 				LL.add_element((key, value))
 				self.num_items += 1
-				self.map[index] = LL
 				return 1
-			else: #collision! just add key, value pair to linked list
-				assert(self.map[index]!= None)
-				LL = self.map[index]
-				if LL.get_value(key) == None:
-					LL.add_element((key, value))
-					self.num_items += 1
-					return 1
-				else:
-					LL.add_element((key, value))
-					return 1
-
-		elif self.num_items == self.size: #only adds when keys already exist
-			if self.map[index] == None:
-				return 0 #not possible
 			else:
-				LL = self.map[index]
-				if LL.get_value(key) == None:
-					return 0
-				else:
-					LL.add_element((key, value))
-					return 1
-		else:
-			return 0
+				LL.add_element((key, value))
+				return 1
+		return 0 #if value is not added for some reason
 
 	def get(self, key): #returns value associated with the key or None if no value exists
 		index = hash(key)%self.size
