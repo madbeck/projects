@@ -1,3 +1,5 @@
+//a unix-style shell using pre-built functions in jobs.c
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/wait.h>
