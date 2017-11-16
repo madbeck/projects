@@ -34,7 +34,7 @@ int main() {
 
     char buf[1024]; 
     #ifdef PROMPT
-	if (printf("33sh> ") < 0) {
+	if (printf("$ ") < 0) {
 		perror("printf");
 	}
 	fflush(stdout);
@@ -47,7 +47,7 @@ int main() {
 		if(buf[0] == '\0') {
 			// if input was just \n
 			#ifdef PROMPT
-			if (printf("33sh> ") < 0) {
+			if (printf("$ ") < 0) {
 				perror("printf");
 			}
 			fflush(stdout);
@@ -60,7 +60,7 @@ int main() {
 			printf("%s\n", buf);
 			perror("read");
 			#ifdef PROMPT
-			if (printf("33sh> ") < 0) {
+			if (printf("$ ") < 0) {
 				perror("printf");
 			}
 			fflush(stdout);
@@ -73,7 +73,7 @@ int main() {
 		reap(); 
 
 		#ifdef PROMPT
-		if (printf("33sh> ") < 0) {
+		if (printf("$ ") < 0) {
 			perror("printf");
 		}
 		fflush(stdout);
