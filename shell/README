@@ -1,0 +1,5 @@
+
+A C program that runs a unix-style shell and handles basic system calls/commands, parent and child processes, input/output file redirection, signals, and more.
+
+The bulk of the program is in shell.c. Jobs.c includes various helper functions for my program.
+
