@@ -1,5 +1,5 @@
 
 A C program that runs a unix-style shell and handles basic system calls/commands, parent and child processes, input/output file redirection, signals, and more.
 
-The bulk of the program is in shell.c. Jobs.c includes various helper functions for my program.
+The bulk of the program is in shell.c. Jobs.c includes various helper functions. My makefile compiles the program with jobs.c and jobs.h, and gives users two executables. "Noprompt" runs the shell without a prompt, and "prompt" prompts users with "$".
 
