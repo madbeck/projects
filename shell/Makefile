@@ -6,21 +6,17 @@ CFLAGS += -D_GNU_SOURCE -std=gnu99
 PROMPT = -DPROMPT
 
 CC = gcc
-EXECS = 33noprompt 33sh
-#do we still want both of these?
+EXECS = noprompt prompt
 
 .PHONY: clean all
 
 all: $(EXECS)
 
-33sh: shell.c jobs.c jobs.h
-	#TODO: compile your program, including the -DPROMPT macro
+prompt: shell.c jobs.c jobs.h
 	$(CC) $(CFLAGS) $(PROMPT) $^ -o $@
 
-33noprompt: shell.c jobs.c jobs.h
-	#TODO: compile your program without the prompt macro
+noprompt: shell.c jobs.c jobs.h
 	$(CC) $(CFLAGS) $^ -o $@
 
 clean:
-	#TODO: clean up any executable files that this Makefile has produced
 	rm -f $(EXECS)
