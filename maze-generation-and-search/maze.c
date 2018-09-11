@@ -56,7 +56,6 @@ void shuffle_array(Direction directions[]) {
  * the drunken_walk algorithm
 */
 void drunken_walk(int row, int col, int num_rows, int num_cols, struct maze_room maze[num_rows][num_cols]) {
-    //Fill in this function CALLS shuffle array
     struct maze_room *r;
     r = &maze[row][col];
     r->visited = 1;
@@ -77,8 +76,8 @@ void drunken_walk(int row, int col, int num_rows, int num_cols, struct maze_room
     			r->connections[2] = 1;
     		}
     	
-    	else{ //if in range
-    		//call get neighbor NOW because we know the neighbor is in range
+    	else {
+    		//if in range call get neighbor NOW because we know the neighbor is in range
     		struct maze_room *neighbor = get_neighbor(num_rows, num_cols, maze, r, directions[i]);
     		if(neighbor->visited == 0){ //aka neighbor has not been visited
 	    		r->connections[directions[i]] = 0;
@@ -223,7 +222,6 @@ int main(int argc, char **argv) {
 #include <stdlib.h>
 #include "solver.h"
 
-
 /*
  * Given a pointer to a maze_room, set its connections in all four directions based
  * on the hex value passed in.
@@ -258,7 +256,6 @@ void create_room_connections(struct maze_room *room, unsigned int hex) {
 }
 
 
-
 /*
  * Recursive depth-first search algorithm for solving random mazes.
  * This function should also print out either every visited room as it goes, or
@@ -277,7 +274,6 @@ void create_room_connections(struct maze_room *room, unsigned int hex) {
  */
 int dfs(int row, int col, int goal_row, int goal_col, int num_rows, int num_cols,
 		struct maze_room maze[num_rows][num_cols], FILE *file) {
-	//Fill in this function
 	
 	#ifdef FULL
 	if(fprintf(file, "%d, %d\n", row, col) < 0){
@@ -294,14 +290,13 @@ int dfs(int row, int col, int goal_row, int goal_col, int num_rows, int num_cols
 
 	for(int dir = 0; dir < 4; dir++){
 		struct maze_room *neighbor = get_neighbor(num_rows, num_cols, maze, room, dir);
-		//struct maze_room *neighbor = get_neighbor(num_rows, num_cols, maze, room, dir);
 		if(neighbor == NULL){
 			continue; //go back to the for loop
 		}
 
 		if(room->connections[dir]==0 && neighbor->visited==0){
 			if(dfs(neighbor->row, neighbor->col, goal_row, goal_col, num_rows, num_cols, maze, file)==1){
-				room->next=neighbor; //IMPORTANt
+				room->next=neighbor;
 				return 1;
 			}
 			else{
@@ -492,48 +487,3 @@ struct maze_room *get_neighbor(int num_rows, int num_cols, struct maze_room maze
 	}
 	return NULL;
 }
-
-
-//FINAL FILE, holds maze struct and directions (.h file)
-/*
- * Enum to represent the four directions
- * Here is an example of how to use an enum:
- *
- * Direction dir = EAST;
- * if (dir == EAST) {
- *     printf("Heading EAST!");
- * }
- */
-/*
-#include <stdbool.h>
-
-typedef enum {
-	NORTH = 0,
-	SOUTH = 1,
-	WEST = 2,
-	EAST = 3
-} Direction;
-
-
- //Struct to represent a room in the maze.
- //Must store:
-
-struct maze_room {
-  struct maze_room *next;
-  // Fill in the rest of the fields you need
-  // int maze[num_rows][num_cols]; ?? necessary?
-  int row;
-  int col;
-  int visited; // 1 if visited, 0 if not visited
-  int connections[4]; //0=north, 1=south, 2=west, 3=east
-  int connection_north; //1 if wall, 0 if no wall
-  int connection_east;
-  int connection_west;
-  int connection_south;
-};
-
-int is_in_range(int row, int col, int num_rows, int num_cols);
-
-struct maze_room *get_neighbor(int num_rows,
-        int num_cols, struct maze_room maze[][num_cols], struct maze_room *room, Direction dir);
-*/
